@@ -1,15 +1,16 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '4.0.0'
+    id 'org.springframework.boot' version '3.2.5'
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-description = 'Demo project for Spring Boot'
+description = 'noticeboard study project'
 
 java {
     toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -24,9 +25,44 @@ repositories {
 }
 
 dependencies {
+
+    /* ======================
+       Web (MVC)
+       ====================== */
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    /* ======================
+       JPA
+       ====================== */
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    /* ======================
+       MyBatis
+       ====================== */
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+
+    /* ======================
+       Database
+       ====================== */
+    runtimeOnly 'com.h2database:h2'           // 테스트용
+    runtimeOnly 'com.mysql:mysql-connector-j' // MySQL
+
+    /* ======================
+       Lombok
+       ====================== */
     compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    /* ======================
+       DevTools
+       ====================== */
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    /* ======================
+       Test
+       ====================== */
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
