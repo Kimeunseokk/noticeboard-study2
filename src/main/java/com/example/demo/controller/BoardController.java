@@ -2,13 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.BoardRequestDto;
 import com.example.demo.dto.BoardResponseDto;
+import com.example.demo.dto.SuccessResponseDto;
 import com.example.demo.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +30,17 @@ public class BoardController {
     @GetMapping("/api/post/{id}")
     public BoardResponseDto getPost(@PathVariable Long id) {
         return boardService.getPost(id);
+    }
+
+    @PostMapping("/api/post/{id}")
+    public BoardResponseDto updatePost(@PathVariable Long id, @RequestBody BoardRequestDto requestDto) {
+       return boardService.updatePost(id, requestDto);
+    }
+
+    @DeleteMapping("/api/post/{id}")
+    public ResponseEntity<Void> deletePost(@PathVariable Long id, @RequestBody BoardRequestDto requestDto) {
+        boardService.deletePost(id,requestDto);
+        return ResponseEntity.noContent().build();
     }
 
 

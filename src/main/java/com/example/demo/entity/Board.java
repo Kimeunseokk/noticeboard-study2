@@ -27,11 +27,15 @@ public class Board extends Timestamp{
     @Column(nullable = false)
     private String author;
 
-    public Board(BoardRequestDto boardRequestDto) {
-        this.title = boardRequestDto.getTitle();
-        this.content = boardRequestDto.getContent();
-        this.password = boardRequestDto.getPassword();
-        this.author = boardRequestDto.getAuthor();
+    public Board(BoardRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.password = requestDto.getPassword();
+        this.author = requestDto.getAuthor();
     }
-
+    public void update(String title, String content, String author){
+        this.title = title;
+        this.content = content;
+        this.author = author;
+    }
 }
