@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Board</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<h1>게시판</h1>
+
+<section class="create">
+    <h2>글 작성</h2>
+    <input type="text" id="title" placeholder="제목">
+    <textarea id="content" placeholder="내용"></textarea>
+    <button onclick="createPost()">등록</button>
+</section>
+
+<section class="list">
+    <h2>게시글 목록</h2>
+    <ul id="postList"></ul>
+</section>
+
+<script src="index.js"></script>
+</body>
+</html>
